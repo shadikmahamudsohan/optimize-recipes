@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Kolker+Brush&display=swap');
+
+.background {
+    background-image: url("../assets/Images/home-pc.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+}
+
+.paper-container {
+    background-image: url("../assets/Images/paper.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    width: 550px;
+    height: 550px;
+    z-index: 100;
+    margin-left: 100px;
+}
+
+.paper-text {
+    font-family: 'Kolker Brush', cursive;
+    font-size: 80px;
+    line-height: 5rem;
+}
+
+.paper-btn:active {
+    color: red;
+}
+
+.paper-btn {
+    font-family: 'Kolker Brush', cursive;
+    font-size: 40px;
+    line-height: 0.4rem;
+    cursor: pointer;
+}
+
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+}
+
+.hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    border-radius: 5px;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
