@@ -58,3 +58,14 @@
     transform: scaleX(1);
     transform-origin: bottom left;
 }
+
+@media only screen and (max-width: 768px) {
+    .background {
+        background-image: url("../assets/Images/home-phone.png");
+    }
+
+    .paper-container {
+        margin-left: 0;
+        width: 450px;
+    }
+}

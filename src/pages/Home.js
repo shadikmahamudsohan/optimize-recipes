@@ -6,7 +6,7 @@ const Home = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="hero min-h-screen background justify-start" style={{ minHeight: "100vh" }}>
+        <div className="hero min-h-screen background md:justify-start justify-center" style={{ minHeight: "100vh" }}>
             <div className='paper-container flex justify-center items-center'>
                 <div>
                     <h1 className='paper-text'>Optimize Your <br /> Recipes</h1>
