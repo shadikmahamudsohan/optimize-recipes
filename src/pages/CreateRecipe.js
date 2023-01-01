@@ -1,8 +1,8 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
-const AboutUs = () => {
+const CreateRecipe = () => {
     const navigate = useNavigate();
 
     return (
@@ -14,8 +14,8 @@ const AboutUs = () => {
         >
             <div className="hero-content text-center">
                 <div className="max-w-md">
-                    <h1 className="text-5xl font-bold">Do you want to know about use?</h1>
-                    <p className="py-6">I won't tell you about me, lol !!!!</p>
+                    <h1 className="text-5xl font-bold">Do you want to Create Your own recipe?</h1>
+                    <p className="py-6">There is no option to create ha ha lol !!!!</p>
                     <button className="btn btn-primary"
                         onClick={() => navigate("/")}
                     >Go Home</button>
@@ -25,4 +25,4 @@ const AboutUs = () => {
     );
 };
 
-export default AboutUs;
+export default CreateRecipe;

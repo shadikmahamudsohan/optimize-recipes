@@ -67,5 +67,7 @@
     .paper-container {
         margin-left: 0;
         width: 450px;
+        height: 100vh;
+
     }
 }
