@@ -66,8 +66,17 @@
 
     .paper-container {
         margin-left: 0;
-        width: 450px;
+        width: 100vw;
         height: 100vh;
+        background-size: 70%;
+    }
+}
 
+@media only screen and (max-width: 600px) {
+    .paper-container {
+        margin-left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-size: 100%;
     }
 }

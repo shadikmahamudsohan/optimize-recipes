@@ -9,7 +9,7 @@ const Home = () => {
     return (
         <motion.div
             className="hero min-h-screen background md:justify-start justify-center text-center"
-            style={{ minHeight: "100vh" }}
+            // style={{ minHeight: "100vh" }}
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
