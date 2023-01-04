@@ -3,13 +3,20 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import '../CSS/Create.css';
 import { toast } from 'react-toastify';
+import RelevantInformation from '../components/RelevantInformation';
+import Restrictions from '../components/Restrictions';
+import NecessaryCreate from '../components/NecessaryCreate';
 const CreateRecipe = () => {
     const navigate = useNavigate();
     const [ingredients, setIngredients] = useState("");
     const [instructions, setInstruction] = useState("");
     const [cookingTimes, setCookingTimes] = useState("");
     const [temperatures, setTemperatures] = useState("");
+    const [vegetarian, setVegetarian] = useState(false);
+    const [glutenFree, setGlutenFree] = useState(false);
+    const [cuisineType, setCuisineType] = useState("");
     const [more, setMore] = useState(false);
+
     const submitForm = (event) => {
         event.preventDefault();
         fetch("https://optimize-recipes-server.vercel.app/recipe", {
@@ -19,7 +26,10 @@ const CreateRecipe = () => {
                 ingredients,
                 instructions,
                 cookingTimes,
-                temperatures
+                temperatures,
+                vegetarian,
+                glutenFree,
+                cuisineType
             }),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -29,6 +39,7 @@ const CreateRecipe = () => {
             .then(data => {
                 if (data?.status === "Success") {
                     toast.success("recipe created");
+                    navigate("/");
                 }
             });
     };
@@ -50,22 +61,11 @@ const CreateRecipe = () => {
                     <form className='w-full' onSubmit={(event) => submitForm(event)}>
                         <div className="form-control w-full flex justify-between h-full">
                             <div>
-                                <label className="label">
-                                    <span className="label-text text-white text-lg font-bold">Ingredients</span>
-                                </label>
-                                <textarea type="text"
-                                    placeholder="Ingredients goes here"
-                                    style={{ borderWidth: 2 }}
-                                    onChange={(event) => setIngredients(event.target.value)}
-                                    className="textarea input-bordered border-white w-full bg-transparent text-white" />
-                                <label className="label">
-                                    <span className="label-text text-white text-lg font-bold">Instruction</span>
-                                </label>
-                                <textarea type="text"
-                                    placeholder="Instruction goes here"
-                                    style={{ borderWidth: 2 }}
-                                    onChange={(event) => setCookingTimes(event.target.value)}
-                                    className="textarea input-bordered border-white w-full bg-transparent text-white" />
+                                <NecessaryCreate
+                                    setIngredients={setIngredients}
+                                    setInstruction={setInstruction}
+
+                                />
                                 <div className="form-control">
                                     <label className="label cursor-pointer w-64">
                                         <input
@@ -75,32 +75,32 @@ const CreateRecipe = () => {
                                             defaultChecked={more}
                                             onChange={() => setMore(!more)}
                                             className='checkbox border-white'
+                                            style={{ borderWidth: 2 }}
                                             value="1" />
                                         <label for="demoCheckbox" className='text-white'>Add more relevant information</label>
                                     </label>
                                 </div>
                                 {
                                     more && <>
-                                        <label className="label">
-                                            <span className="label-text text-white text-lg font-bold">Cooking times</span>
-                                        </label>
-                                        <input type="number"
-                                            placeholder="Cooking times goes here"
-                                            style={{ borderWidth: 2 }}
-                                            onChange={(event) => setInstruction(event.target.value)}
-                                            className="input input-bordered border-white w-full bg-transparent text-white" />
-                                        <div className="form-control"></div>
-                                        <label className="label">
-                                            <span className="label-text text-white text-lg font-bold">Temperatures (C°)</span>
-                                        </label>
-                                        <input type="number"
-                                            placeholder="Temperatures times goes here"
-                                            style={{ borderWidth: 2 }}
-                                            onChange={(event) => setTemperatures(event.target.value)}
-                                            className="input input-bordered border-white w-full bg-transparent text-white" />
-                                        <div className="form-control"></div>
+                                        <RelevantInformation
+                                            setCookingTimes={setCookingTimes}
+                                            setTemperatures={setTemperatures}
+                                        />
                                     </>
                                 }
+                                <Restrictions
+                                    setVegetarian={setVegetarian}
+                                    setGlutenFree={setGlutenFree}
+                                    vegetarian={vegetarian}
+                                    glutenFree={glutenFree}
+                                />
+                                <select
+                                    onChange={(event) => setCuisineType(event.target.value)}
+                                    className="my-3 select w-full bg-transparent border-white text-white" style={{ borderWidth: 2 }}>
+                                    <option className='text-black' disabled selected>Pick your cuisine type</option>
+                                    <option className='text-black'>Italian</option>
+                                    <option className='text-black'>Mexican</option>
+                                </select>
                             </div>
                             <div>
                                 <button type="submit"

@@ -20,6 +20,5 @@
 @media only screen and (max-width: 768px) {
     .create-card {
         width: 90vw;
-        height: 90vh;
     }
 }
