@@ -1,0 +1,38 @@
+.find-bg {
+    background-image: url("../assets/Images/bg-paper.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+}
+
+.find-title {
+    font-family: 'Kolker Brush', cursive;
+    font-size: 80px;
+}
+
+.find-search {
+    width: 100%;
+    height: 56px;
+    border: 2px solid #0000005d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 50px;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: black;
+    font-size: 30px;
+}
+
+.find-description {
+    font-size: 18px;
+    padding-bottom: 13px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.425);
+    line-height: 3rem;
+    font-family: cursive
+}
